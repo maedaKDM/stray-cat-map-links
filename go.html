@@ -40,6 +40,19 @@
     font-size: 15px;
   }
   .hint { margin-top: 20px; font-size: 12px; color: #8a9998; }
+  .store-links { display: none; margin-top: 18px; }
+  .store-links p { margin: 0 0 8px; }
+  .store-link {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 18px;
+    border: 1px solid #00897b;
+    color: #00897b;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+  }
 </style>
 </head>
 <body>
@@ -49,15 +62,22 @@
     <p id="message">アプリを開いています…</p>
     <a class="btn" id="openBtn" href="#">アプリで開く</a>
     <p class="hint">アプリがインストールされていない場合、このボタンを押しても何も起こりません。</p>
+    <div class="store-links" id="storeLinks"></div>
   </div>
 
 <script>
   (function () {
+    // 公開後にストアのURLをここへ入れると、下に自動でボタンが表示されるようになる。
+    // 空のままなら何も表示されない(未公開の間はダミーリンクを出さないため)。
+    var PLAY_STORE_URL = '';
+    var APP_STORE_URL = '';
+
     var params = new URLSearchParams(window.location.search);
     var type = params.get('type'); // 'cat' | 'sighting'
     var id = params.get('id');
     var messageEl = document.getElementById('message');
     var btnEl = document.getElementById('openBtn');
+    var storeEl = document.getElementById('storeLinks');
 
     if (!type || !id || (type !== 'cat' && type !== 'sighting')) {
       messageEl.textContent = 'このリンクは正しくないようです。';
@@ -74,6 +94,18 @@
 
     setTimeout(function () {
       messageEl.textContent = 'アプリがインストールされていれば、上のボタンでStray Cat Mapが開きます。';
+
+      var links = [];
+      if (PLAY_STORE_URL) {
+        links.push('<a class="store-link" href="' + PLAY_STORE_URL + '">Google Playで入手</a>');
+      }
+      if (APP_STORE_URL) {
+        links.push('<a class="store-link" href="' + APP_STORE_URL + '">App Storeで入手</a>');
+      }
+      if (links.length > 0) {
+        storeEl.innerHTML = '<p>アプリをお持ちでない方はこちら</p>' + links.join('');
+        storeEl.style.display = 'block';
+      }
     }, 1200);
   })();
 </script>
