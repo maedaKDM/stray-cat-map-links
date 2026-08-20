@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Stray Cat Map</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ねこまちマップ</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
   :root { color-scheme: light; }
   body {
@@ -58,7 +59,7 @@
 <body>
   <div class="card">
     <div class="emoji">🐾</div>
-    <h1>Stray Cat Map</h1>
+    <h1>ねこまちマップ</h1>
     <p id="message">アプリを開いています…</p>
     <a class="btn" id="openBtn" href="#">アプリで開く</a>
     <p class="hint">アプリがインストールされていない場合、このボタンを押しても何も起こりません。</p>
@@ -67,6 +68,14 @@
 
 <script>
   (function () {
+    // 旧バージョンが生成したGitHub Pagesの共有URLも、新しい公式ドメインへ引き継ぐ。
+    if (window.location.hostname.toLowerCase() === 'maedakdm.github.io') {
+      window.location.replace(
+        'https://catownmap.com/go.html' + window.location.search + window.location.hash
+      );
+      return;
+    }
+
     // 公開後にストアのURLをここへ入れると、下に自動でボタンが表示されるようになる。
     // 空のままなら何も表示されない(未公開の間はダミーリンクを出さないため)。
     var PLAY_STORE_URL = '';
@@ -93,7 +102,7 @@
     window.location.href = appUrl;
 
     setTimeout(function () {
-      messageEl.textContent = 'アプリがインストールされていれば、上のボタンでStray Cat Mapが開きます。';
+      messageEl.textContent = 'アプリがインストールされていれば、上のボタンでねこまちマップが開きます。';
 
       var links = [];
       if (PLAY_STORE_URL) {
