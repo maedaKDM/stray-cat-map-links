@@ -178,6 +178,27 @@
       margin-bottom: 8px;
     }
 
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--green-dark);
+      text-decoration: none;
+    }
+
     @media (max-width: 680px) {
       .page { width: min(100% - 20px, 900px); }
       .hero,
@@ -227,6 +248,10 @@
     </main>
 
     <footer>
+      <nav class="social-links" aria-label="公式SNS">
+        <a href="https://www.instagram.com/catownmap/" target="_blank" rel="noopener noreferrer" aria-label="ねこまちマップ公式Instagramを新しいタブで開く">Instagram @catownmap</a>
+        <a href="https://x.com/catownmap" target="_blank" rel="noopener noreferrer" aria-label="ねこまちマップ公式Xを新しいタブで開く">X @catownmap</a>
+      </nav>
       <nav class="footer-links" aria-label="法的情報">
         <a href="/terms.html">利用規約</a>
         <a href="/privacy.html">プライバシーポリシー</a>
