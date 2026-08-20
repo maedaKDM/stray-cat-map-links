@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta
+    name="description"
+    content="ねこまちマップのアカウントと関連データを削除する方法をご案内します。"
+  >
+  <link
+    rel="canonical"
+    href="https://maedakdm.github.io/stray-cat-map-links/account-deletion.html"
+  >
+  <title>アカウントの削除 | ねこまちマップ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f8f4e9;
+      --surface: #fffdf7;
+      --surface-soft: #f0eddf;
+      --text: #493e34;
+      --muted: #70685f;
+      --green: #829a77;
+      --green-dark: #52694b;
+      --green-soft: #dce8d4;
+      --orange: #e9782a;
+      --border: #e3dac5;
+      --shadow: 0 18px 45px rgba(73, 62, 52, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, #e5efd9 0, transparent 34rem),
+        var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: var(--green-dark); }
+
+    .page {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-dark);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--green-soft);
+      font-size: 20px;
+    }
+
+    .hero {
+      margin-top: 22px;
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid rgba(227, 218, 197, 0.9);
+      border-radius: 30px;
+      background: rgba(255, 253, 247, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 48px);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .quick-links a {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    main { margin-top: 26px; }
+
+    .section {
+      margin-top: 18px;
+      padding: clamp(24px, 5vw, 38px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(22px, 4vw, 28px);
+      line-height: 1.4;
+    }
+
+    h3 {
+      margin: 0 0 7px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    p { margin: 10px 0; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .steps li {
+      position: relative;
+      min-height: 126px;
+      padding: 42px 15px 17px;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      counter-increment: steps;
+    }
+
+    .steps li::before {
+      position: absolute;
+      top: 14px;
+      left: 15px;
+      display: grid;
+      width: 23px;
+      height: 23px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      content: counter(steps);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .steps strong { display: block; }
+
+    .callout {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--green);
+      border-radius: 8px 16px 16px 8px;
+      background: var(--green-soft);
+    }
+
+    .request-box {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px solid var(--green);
+      border-radius: 20px;
+      background: #f7fbf4;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 13px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: var(--green-dark);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .notice {
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .email-address { font-weight: 700; }
+
+    .checklist { padding-left: 1.35em; }
+
+    .checklist li { margin: 7px 0; }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mode-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface-soft);
+    }
+
+    .mode-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .data-table {
+      width: 100%;
+      margin-top: 18px;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .data-table th {
+      width: 33%;
+      color: var(--green-dark);
+    }
+
+    details {
+      margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    summary {
+      padding: 19px 22px;
+      color: var(--green-dark);
+      cursor: pointer;
+      font-weight: 750;
+    }
+
+    .english-content { padding: 0 22px 24px; }
+
+    footer {
+      padding: 28px 8px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 900px);
+        padding-top: 18px;
+      }
+
+      .hero,
+      .section { border-radius: 22px; }
+
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .mode-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 430px) {
+      .steps { grid-template-columns: 1fr; }
+      .steps li { min-height: auto; }
+      .request-box { padding: 19px; }
+      .button { width: 100%; }
+      .data-table,
+      .data-table tbody,
+      .data-table tr,
+      .data-table th,
+      .data-table td { display: block; }
+      .data-table th {
+        width: auto;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+      .data-table td { padding-top: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">🐾</span>
+        <span>ねこまちマップ</span>
+      </div>
+
+      <div class="hero">
+        <p class="eyebrow">ACCOUNT &amp; DATA DELETION</p>
+        <h1>アカウントの削除</h1>
+        <p class="lead">
+          ねこまちマップのアカウントと、アカウントに関連する個人データを削除できます。
+          アプリを利用できない場合も、このページから削除を申請できます。
+        </p>
+        <nav class="quick-links" aria-label="ページ内メニュー">
+          <a href="#in-app">アプリ内で削除</a>
+          <a href="#web-request">Webから申請</a>
+          <a href="#deleted-data">削除されるデータ</a>
+          <a href="#retention">保持されるデータ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="in-app">
+        <h2>アプリ内で削除する</h2>
+        <p>
+          アプリへログインできる場合は、アプリ内での削除が最も早く、本人確認も同時に完了します。
+        </p>
+        <ol class="steps">
+          <li><strong>プロフィール</strong>画面を開く</li>
+          <li><strong>プロフィール・アカウント設定</strong>を開く</li>
+          <li><strong>アカウントを削除</strong>を選ぶ</li>
+          <li>投稿の扱いを選び、<strong>削除を確定</strong>する</li>
+        </ol>
+        <div class="callout">
+          削除が完了すると自動的にログアウトします。削除したアカウントは復元できません。
+        </div>
+      </section>
+
+      <section class="section" id="web-request">
+        <h2>アプリを利用できない場合</h2>
+        <p>
+          機種変更やアンインストールなどでアプリを利用できない場合は、登録メールアドレスから
+          削除を申請してください。Googleログインを利用していた場合は、そのGoogleアカウントの
+          メールアドレスからご連絡ください。
+        </p>
+
+        <div class="request-box">
+          <h3>メールで削除を申請</h3>
+          <p>メールには次の内容を記載してください。</p>
+          <ul class="checklist">
+            <li>登録したメールアドレス</li>
+            <li>ログイン方法（メール／Google）</li>
+            <li>投稿と写真を「すべて削除」または「匿名の共同記録として残す」のどちらにするか</li>
+          </ul>
+          <p class="email-address">
+            申請先：<a href="mailto:catownmap@gmail.com">catownmap@gmail.com</a>
+          </p>
+          <a
+            class="button"
+            href="mailto:catownmap@gmail.com?subject=%E3%81%AD%E3%81%93%E3%81%BE%E3%81%A1%E3%83%9E%E3%83%83%E3%83%97%20%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E5%89%8A%E9%99%A4%E7%94%B3%E8%AB%8B&amp;body=%E7%99%BB%E9%8C%B2%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%EF%BC%9A%0A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E6%96%B9%E6%B3%95%EF%BC%88%E3%83%A1%E3%83%BC%E3%83%AB%EF%BC%8FGoogle%EF%BC%89%EF%BC%9A%0A%E6%8A%95%E7%A8%BF%E3%81%A8%E5%86%99%E7%9C%9F%EF%BC%88%E3%81%99%E3%81%B9%E3%81%A6%E5%89%8A%E9%99%A4%EF%BC%8F%E5%8C%BF%E5%90%8D%E3%81%AE%E5%85%B1%E5%90%8C%E8%A8%98%E9%8C%B2%E3%81%A8%E3%81%97%E3%81%A6%E6%AE%8B%E3%81%99%EF%BC%89%EF%BC%9A%0A"
+          >削除申請メールを作成</a>
+          <p class="notice">
+            パスワード、確認コード、本人確認書類はメールに記載・添付しないでください。
+          </p>
+        </div>
+
+        <p>
+          本人確認後、原則として速やかに対応します。確認や調査が必要な場合は、完了まで最大30日程度
+          かかることがあります。削除が完了した際はメールでお知らせします。
+        </p>
+      </section>
+
+      <section class="section" id="deleted-data">
+        <h2>削除されるデータ</h2>
+        <p>どちらの削除方法を選んでも、次のアカウント関連データは削除されます。</p>
+        <ul class="checklist">
+          <li>ログイン用アカウント、登録メールアドレス、プロフィール</li>
+          <li>コメント、お気に入り、投票、閲覧履歴などの個人的な活動データ</li>
+          <li>猫や投稿に設定されていた所有者・投稿者との紐付け</li>
+        </ul>
+
+        <div class="mode-grid">
+          <article class="mode-card">
+            <span class="mode-label">すべて削除</span>
+            <h3>投稿と写真も削除する</h3>
+            <p>
+              自分が投稿した目撃情報と写真を削除します。目撃情報が残らない猫も削除されます。
+              他の利用者による目撃情報がある猫は、所有者情報を外した共同記録として残る場合があります。
+            </p>
+          </article>
+
+          <article class="mode-card">
+            <span class="mode-label">共同記録として残す</span>
+            <h3>投稿と写真を匿名で残す</h3>
+            <p>
+              地域の猫の記録として目撃情報と写真を残します。投稿者との紐付けとメモは削除され、
+              匿名の共同記録になります。削除後に編集したり、元のアカウントへ戻したりすることはできません。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="retention">
+        <h2>削除後も保持される場合があるデータ</h2>
+        <table class="data-table">
+          <tbody>
+            <tr>
+              <th>匿名の共同記録</th>
+              <td>「共同記録として残す」を選んだ場合の目撃情報と写真。投稿者を特定する情報とメモは削除されます。</td>
+            </tr>
+            <tr>
+              <th>共同管理の猫</th>
+              <td>他の利用者の目撃情報がある猫。削除した利用者の所有者情報は外されます。</td>
+            </tr>
+            <tr>
+              <th>削除処理記録</th>
+              <td>処理の完了確認や障害時の再試行に必要な記録を、削除開始から最長90日間保持します。</td>
+            </tr>
+            <tr>
+              <th>安全・法令対応</th>
+              <td>不正利用への対応や法令上必要な場合、必要最小限の記録を保持することがあります。可能な範囲で利用者との紐付けを削除します。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <details lang="en">
+        <summary>English information</summary>
+        <div class="english-content">
+          <h2>Delete your Catown Map account</h2>
+          <p>
+            You can delete your Catown Map account and associated personal data from within the app.
+            Open <strong>Profile → Profile &amp; account settings → Delete account</strong>, choose how
+            to handle your sightings and photos, and confirm the deletion.
+          </p>
+
+          <h3>If you cannot access the app</h3>
+          <p>
+            Send a deletion request from the email address registered to your account. If you used
+            Google Sign-In, contact us from that Google account. Include your sign-in method and
+            whether you want your sightings and photos deleted or retained as anonymous community records.
+            Send the request to <a href="mailto:catownmap@gmail.com">catownmap@gmail.com</a>.
+            Never send your password or verification code.
+          </p>
+
+          <h3>What is deleted</h3>
+          <p>
+            Your authentication account, email address, profile, comments, favorites, votes, view
+            history, and links identifying you as an owner or contributor are deleted. If you choose
+            full deletion, your sightings and photos are deleted. If you choose community retention,
+            the sightings and photos remain without your identity or private memo and cannot be restored
+            to you later.
+          </p>
+
+          <h3>Retention</h3>
+          <p>
+            Deletion-processing records may be retained for up to 90 days to confirm completion and
+            safely retry interrupted operations. Minimal records may also be retained where required
+            for security, abuse prevention, or legal compliance.
+          </p>
+        </div>
+      </details>
+    </main>
+
+    <footer>
+      <p>運営：ねこまちマップ運営</p>
+      <p>お問い合わせ：<a href="mailto:catownmap@gmail.com">catownmap@gmail.com</a></p>
+      <p>最終更新日：2026年8月20日</p>
+    </footer>
+  </div>
+</body>
+</html>
